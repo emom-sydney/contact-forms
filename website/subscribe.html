@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <p align="center"><a href="https://linktr.ee/emom.sydney"><img src="avatar.png" align="center" width="200" height="200"></a></p>
+    <h1>emom.sydney</h1>
+    <h3>Subscribe to our mailing list</h3>
+    <p>We have no reason to share your email address with anyone else, so we won't!</p>
+    
+    <form id="web-form">
+      <input type="hidden" id="formtype" name="formtype" value="subscribe">
+
+      <label for="name">Name (optional):</label>
+      <input type="text" id="name" name="name">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <input type="hidden" id="subscribe" name="subscribe" value="subscribe-requested">
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

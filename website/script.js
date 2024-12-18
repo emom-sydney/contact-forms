@@ -1,26 +1,69 @@
-document.getElementById('contact-form').addEventListener('submit', function(event) {
+document.getElementById('web-form').addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent form submission
 
   // Validate form inputs
   var name = document.getElementById('name').value.trim();
   var email = document.getElementById('email').value.trim();
-  var subject = document.getElementById('subject').value.trim();
-  var message = document.getElementById('message').value.trim();
+  var formtype = document.getElementById('formtype').value.trim();
 
+  if (document.getElementById('subject')) {
+    var subject = document.getElementById('subject').value.trim();
+  }
+  if (document.getElementById('message')) {
+    var message = document.getElementById('message').value.trim();
+  }
+  if (document.getElementById('mobile')) {
+    var mobile = document.getElementById('mobile').value.trim();
+  }
+  if (document.getElementById('genre')) {
+    var genre = document.getElementById('genre').value.trim();
+  }
+  if (document.getElementById('url')) {
+    var url = document.getElementById('url').value.trim();
+  }
+  
   // Email validation using a regular expression
   var emailRegex = /^\S+@\S+\.\S+$/;
-  if (!name || !email || !subject || !message || !emailRegex.test(email)) {
-    alert('Please fill in all fields with valid inputs.');
-    return;
-  }
  
   // Construct the form data 
-  var formData = {
-    name: name,
-    email: email,
-    subject: subject,
-    message: message
-  };
+
+  if ( formtype == "contact") {
+    if (!name || !email || !subject || !message || !emailRegex.test(email)) {
+      alert('Please fill in all fields with valid inputs.');
+      return;
+    }
+    var formData = {
+      formtype: formtype,
+      name: name,
+      email: email,
+      subject: subject,
+      message: message
+    };
+  } else if ( formtype == "preregistration") {
+    if (!name || !email || !mobile || !message || !emailRegex.test(email)) {
+      alert('Please fill in all fields with valid inputs.');
+      return;
+    }
+    var formData = {
+      formtype: formtype,
+      name: name,
+      email: email,
+      mobile: mobile,
+      genre: genre,
+      url: url,
+      message: message
+    };
+  }  else if ( formtype == "subscribe") {
+    if ( !email || !emailRegex.test(email)) {
+      alert('Please fill in all fields with valid inputs.');
+      return;
+    }
+    var formData = {
+      formtype: formtype,
+      name: name,
+      email: email
+    };
+  }
 
   // Perform form submission
   submitForm(formData);
@@ -28,7 +71,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
 function submitForm(formData) {
   // Make an API request to the backend (API Gateway) for form submission
-  fetch('your-api-gateway', { // URL that represents the backend API endpoint to which the form data is going to be sent
+  fetch('https://l21kpppyx6.execute-api.ap-southeast-2.amazonaws.com/main/submit', { // URL that represents the backend API endpoint to which the form data is going to be sent
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

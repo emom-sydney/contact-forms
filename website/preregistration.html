@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <p align="center"><a href="https://linktr.ee/emom.sydney"><img src="avatar.png" align="center" width="200" height="200"></a></p>
+    <h1>emom.sydney</h1>
+    <h3>Performer pre-registration</h3>
+    <p>You don't have to fill out this form to play (you have to turn up at 6pm sharp on the night to do that) but if you can pre-register your intention to play and tell us a little bit about yourself it really helps us plan for a smooth evening.</p>
+    
+    <form id="web-form">
+      <input type="hidden" id="formtype" name="formtype" value="preregistration">
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="mobile">Mobile (optional):</label>
+      <input type="text" id="mobile" name="mobile" required>
+
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" name="genre">
+
+      <label for="url">URL:</label>
+      <input type="text" id="url" name="url">
+      
+      <label for="message">Brief description of what you'd like to do for 15 minutes on a stage in front of an audience:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
